@@ -1,9 +1,11 @@
-import { Video as LucideIcon } from 'lucide-react';
+'use client';
+import { LucideProps } from 'lucide-react';
+import { ComponentType } from 'react';
 
 interface KPICardProps {
   title: string;
   value: string | number;
-  icon: LucideIcon;
+  icon: ComponentType<LucideProps>;
   trend?: {
     value: number;
     isPositive: boolean;
@@ -31,7 +33,6 @@ export default function KPICard({ title, value, icon: Icon, trend, format = 'num
           </div>
         )}
       </div>
-      
       <div>
         <h3 className="text-slate-400 text-sm font-medium mb-1">{title}</h3>
         <p className="text-2xl font-bold text-white">{formatValue(value)}</p>
