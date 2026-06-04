@@ -21,11 +21,11 @@ export async function fetchSheetData(): Promise<SheetData[]> {
       const values: string[] = line.split(',').map((value: string) => value.replace(/"/g, '').trim());
 
       if (values.length >= headers.length) {
-        const row: Record<string, string | number> = {};
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const row: any = {};
 
         headers.forEach((header: string, index: number) => {
           const value = values[index];
-
           if (['CUBETAS', 'SELLADAS', 'CARTON', 'UNIDADES', 'NEVERAS', 'PUNTOS', 'Retorno neveras', 'retorno cubetas'].includes(header)) {
             row[header] = parseFloat(value) || 0;
           } else if (header === '%retorno') {
